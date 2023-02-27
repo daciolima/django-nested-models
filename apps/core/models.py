@@ -89,7 +89,7 @@ class RequisicaoSaidaProduto(models.Model):
         ordering = ["-id"]
 
     def __str__(self) -> str:
-        return self.descricao_saida
+        return self.status_requisicao
 
     @property  # Campo calculado direto na classe sem armazenamento no banco
     def resumo_total(self):
@@ -115,32 +115,3 @@ class ItemSaidaProduto(models.Model):
 
     def __str__(self) -> str:
         return f"{self.compra} - {self.produto} - {self.quantidade}"
-
-
-# class RequisicaoSaidaProdutoItemSaidaProduto(models.Model):
-#     id = models.AutoField(primary_key=True)
-#     requisicao_saida_produto_id = models.ForeignKey(RequisicaoSaidaProduto, on_delete=models.CASCADE)
-#     itens_entrada_produto_id = models.ForeignKey(
-#         ItemSaidaProduto, on_delete=models.CASCADE, related_name='item_saida_produto')
-
-
-# class StatusRequisição(models.Model):
-
-#     # class StatusRequisicao(models.IntegerChoices):
-#     #     aguardando = 1, 'Aguardando Liberação'
-#     #     atendida = 2, 'Atendida'
-#     #     negada = 3, 'Negada'
-#     #     cancelada = 4, 'Cancelada'
-#     #     aguardando_compra = 5, 'Aguardando Compra'
-
-#     __STATUS_REQUISICAO = {
-#         ('aguardando_liberacao', 'Aguardando Liberação'),
-#         ('aguardando_compra', 'Aguardando Compra'),
-#         ('liberada', 'Liberada'),
-#         ('negada', 'Negada'),
-#         ('cancelada', 'Cancelada'),
-#     }
-
-#     id = models.AutoField(primary_key=True)
-#     status_requisicao = models.CharField(max_length=25, choices=__STATUS_REQUISICAO, null=False)
-#     # status_requisicao = models.IntegerField(choices=StatusRequisicao.choices, null=False, )

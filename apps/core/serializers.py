@@ -125,10 +125,9 @@ class RequisicaoSaidaProdutoWriteSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         itens = validated_data.pop("itens")
-        print(validated_data["usuario"])
+
         compra = RequisicaoSaidaProduto.objects.create(**validated_data)
         for item in itens:
-            print(item)
             ItemSaidaProduto.objects.create(compra=compra, **item)
         return compra
 

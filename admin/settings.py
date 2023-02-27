@@ -29,9 +29,9 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "django_extensions",
     "corsheaders",
-    "apps.core",
     "rest_framework",
     "drf_spectacular",
+    "apps.core",
 ]
 
 MIDDLEWARE = [
